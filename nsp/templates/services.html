@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="/static/services.css">
+</head>
+<body>
+    <h1>Textovert</h1>
+    <main class="main flow">
+        <div class="main__ser_prs ser_prs">
+          <div class="ser_prs__inner">
+            <div class="ser_prs__ser_pr ser_pr">
+              <h2 class="ser_pr__heading">Chat-o-vert</h2>
+              <p class="ser_pr__img"><img src="/static/OIG.png"></p>
+              <ul role="list" class="ser_pr__bullets flow">
+                <li>The only thing you wanted is to be heard by someone even your silence.<br>
+                    So why don't we just talk with randoms and let them hear us as well we hear their thoughts to make them feel safe here.</li>
+              </ul>
+              <a href="/chat-o-vert" class="ser_pr__cta cta">Get Started</a>
+            </div>
+      
+            <div class="ser_prs__ser_pr ser_pr">
+              <h2 class="ser_pr__heading">Scratch-o-vert</h2>
+              <p class="ser_pr__img"><img src="/static/OIG (1).png"></p>
+              <ul role="list" class="ser_pr__bullets flow">
+                <li>The platform where you can share your deep thinking with others or can share your thoughts.<br>
+                    Feel free to show your art of scratching quotes on paper that is hidden from this world.</li>
+              </ul>
+              <a href="/scratchvert" class="ser_pr__cta cta">Get Started</a>
+            </div>
+      
+            <div class="ser_prs__ser_pr ser_pr">
+              <h2 class="ser_pr__heading">Scene-o-vert</h2>
+              <p class="ser_pr__img"><img src="/static/OIG (1) (1).png"></p>
+              <ul role="list" class="ser_pr__bullets flow">
+                <li>The place where all you wanted to be seen but have you ever thought about the sketches that is hidden from yourself?<br>
+                    Let's share the creativity of your imagination and let us praise your work.></li>
+              </ul>
+              <a href="#" class="ser_pr__cta cta">Get Started</a>
+            </div>
+          </div>
+          
+          <div class="overlay ser_prs__inner"></div>
+        </div>
+      </main>
+
+      
+<script>
+        console.clear();
+
+const ser_prsContainer = document.querySelector(".ser_prs");
+const ser_prsContainerInner = document.querySelector(".ser_prs__inner");
+const ser_prs = Array.from(document.querySelectorAll(".ser_pr"));
+const overlay = document.querySelector(".overlay");
+
+const applyOverlayMask = (e) => {
+  const overlayEl = e.currentTarget;
+  const x = e.pageX - ser_prsContainer.offsetLeft;
+  const y = e.pageY - ser_prsContainer.offsetTop;
+
+  overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`;
+};
+
+const createOverlayCta = (overlayser_pr, ctaEl) => {
+  const overlayCta = document.createElement("div");
+  overlayCta.classList.add("cta");
+  overlayCta.textContent = ctaEl.textContent;
+  overlayCta.setAttribute("aria-hidden", true);
+  overlayser_pr.append(overlayCta);
+};
+
+const observer = new ResizeObserver((entries) => {
+  entries.forEach((entry) => {
+    const ser_prIndex = ser_prs.indexOf(entry.target);
+    let width = entry.borderBoxSize[0].inlineSize;
+    let height = entry.borderBoxSize[0].blockSize;
+
+    if (ser_prIndex >= 0) {
+      overlay.children[ser_prIndex].style.width = `${width}px`;
+      overlay.children[ser_prIndex].style.height = `${height}px`;
+    }
+  });
+});
+
+const initOverlayser_pr = (ser_prEl) => {
+  const overlayser_pr = document.createElement("div");
+  overlayser_pr.classList.add("ser_pr");
+  createOverlayCta(overlayser_pr, ser_prEl.lastElementChild);
+  overlay.append(overlayser_pr);
+  observer.observe(ser_prEl);
+};
+
+ser_prs.forEach(initOverlayser_pr);
+document.body.addEventListener("pointermove", applyOverlayMask);
+
+      </script>
+</body>
+</html>

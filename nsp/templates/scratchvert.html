@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat-o-vert</title>
+    <link rel="stylesheet" href="/static/signup.css">
+</head>
+<body>
+<div class="heading">
+    <h1>
+        Textovert
+    </h1>
+</div>
+<div class="hero">
+    <div class="main-box">
+        <div class="form-box">
+            <div id="after"></div>
+            <div class="button-box">
+                <div class="btn" id="btn"></div>
+                <button id="log" type="button" class="toggle-btn" onclick="login()">Welcome</button>
+            </div>
+            <form action="/scratch" class="form">
+                <div>
+                    <input type="text" name="username" class="input-field" placeholder="Enter your username:">
+                </div>
+                <div class="room">
+                    <label>Enter room id:</label>
+                    <input type="radio" name="room" value="Scratch-o-vert">
+                    <label for="Scratch-o-vert">Scratch-o-vert</label>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+        <span class="sp sp-t"></span>
+        <span class="sp sp-r"></span>
+        <span class="sp sp-b"></span>
+        <span class="sp sp-l"></span>
+    </div>
+</div>
+<script>
+    let x = document.getElementById("login");
+    let y = document.getElementById("register");
+    let z = document.getElementById("btn");
+    let log = document.getElementById("log");
+    let reg = document.getElementById("reg");
+    let after = document.getElementById("after");
+
+    function register() {
+        x.style.left = "-500px";
+        y.style.left = "0px";
+        z.style.left = "110px";
+        log.style.color = "rgb(234, 234, 235)";
+        reg.style.color = "#252525";
+        after.style.left = "0";
+        after.style.top = "0";
+    }
+    function login() {
+        x.style.left = "0px";
+        y.style.left = "500px";
+        z.style.left = "0px";
+        reg.style.color = "rgb(234, 234, 235)";
+        log.style.color = "#252525";
+        after.style.left = "50%";
+        after.style.top = "0";
+
+    }
+</script>
+</body>
+</html>

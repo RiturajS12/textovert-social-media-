@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            background-color: #022640;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3CradialGradient id='a' cx='0' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%2308053b'/%3E%3Cstop offset='1' stop-color='%2308053b' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='b' cx='1200' cy='800' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%236d2776'/%3E%3Cstop offset='1' stop-color='%236d2776' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='c' cx='600' cy='0' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%236d2e4c'/%3E%3Cstop offset='1' stop-color='%236d2e4c' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='d' cx='600' cy='800' r='600' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23022640'/%3E%3Cstop offset='1' stop-color='%23022640' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='e' cx='0' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23270836'/%3E%3Cstop offset='1' stop-color='%23270836' stop-opacity='0'/%3E%3C/radialGradient%3E%3CradialGradient id='f' cx='1200' cy='0' r='800' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23847973'/%3E%3Cstop offset='1' stop-color='%23847973' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='1200' height='800'/%3E%3Crect fill='url(%23b)' width='1200' height='800'/%3E%3Crect fill='url(%23c)' width='1200' height='800'/%3E%3Crect fill='url(%23d)' width='1200' height='800'/%3E%3Crect fill='url(%23e)' width='1200' height='800'/%3E%3Crect fill='url(%23f)' width='1200' height='800'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+            width: 100%;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+            position: relative;
+            bottom: 30%;
+            text-align: center;
+            font-style: italic;
+            text-decoration: wavy;
+        }
+
+        .form-box {
+            width: 350px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .input-field {
+            width: 95%;
+            height: 20px;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+                    background: linear-gradient(to left, transparent, rgb(123, 28, 124), #2c58a4);
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition:         background 0.3s;
+        }
+
+        .submit-btn:hover {
+                    background: #a645bf;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">
+        <h1>Textovert</h1>
+    </div>
+    <div class="form-box">
+        <p>Please enter the OTP sent to your email:</p>
+        <form action="/verify_otp" method="post">
+            <input type="email" class="input-field" id="email" name="email" placeholder="Email" required><br>
+            <input type="text" class="input-field" id="otp" name="otp" placeholder="OTP" required><br>
+            <input type="submit" class="submit-btn" value="Verify OTP">
+        </form>
+    </div>
+
+    <script>
+       let x = document.getElementById("login");
+		let y = document.getElementById("register");
+		let z = document.getElementById("btn");
+		let log = document.getElementById("log");
+		let reg = document.getElementById("reg");
+		let after = document.getElementById("after");
+
+		function register() {
+			x.style.left = "-500px";
+			y.style.left = "0px";
+			z.style.left = "110px";
+			log.style.color = "rgb(234, 234, 235)";
+			reg.style.color = "#252525";
+			after.style.left = "0";
+			after.style.top = "0";
+		}
+		function login() {
+			x.style.left = "0px";
+			y.style.left = "500px";
+			z.style.left = "0px";
+			reg.style.color = "rgb(234, 234, 235)";
+			log.style.color = "#252525";
+			after.style.left = "50%";
+			after.style.top = "0";
+
+		}
+    </script>
+</body>
+
+</html>

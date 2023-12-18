@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch-o-vert</title>
+    <link rel="stylesheet" href="/static/signup.css">
+</head>
+<body>
+<h1>Welcome to {{ room }}</h1>
+
+<div id="messages"></div>
+
+<form id="message_input_form" class="msg" enctype="multipart/form-data">
+    <input type="file" id="image_input" class="input-field" accept="image/*">
+    <button type="button" class="submit-btn" onclick="sendImage()">Send</button>
+</form>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+<script>
+    const socket = io.connect("http://127.0.0.1:5000");
+
+    socket.on('connect', function () {
+        socket.emit('join_room', { username: "{{ username }}", room: "{{ room }}" });
+    });
+
+    function sendImage(file) {
+    let reader = new FileReader();
+    reader.onloadend = function () {
+        let image = reader.result;
+        socket.emit('send_image', {
+            username: "{{ username }}",
+            room: "{{ room }}",
+            image: image
+        });
+    };
+    reader.readAsDataURL(file); 
+}
+
+let fileInput = document.getElementById('image_input');
+fileInput.addEventListener('change', function () {
+    let file = fileInput.files[0];
+    if (file) {
+        sendImage(file);
+        fileInput.value = '';
+    }
+});
+
+
+</script>
+</html>

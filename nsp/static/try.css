@@ -1,0 +1,12 @@
+*{
+    background-image: url(/static/651931d30f75262467da9af2.png) 100%;
+    background-size: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+h1{
+    margin: 25%;
+    color: blue;
+    position: relative;
+    left: 20%;
+}
